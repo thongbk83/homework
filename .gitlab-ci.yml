@@ -1,0 +1,66 @@
+# image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - apt-get update -qq && apt-get install
+  # - apt-get update -qy
+  # - apt-get install -y ruby-dev
+  # - gem install dpl
+
+stages:
+  - test
+  - teste2e
+  - staging
+
+# Test:
+#   stage: test
+#   before_script:
+#     - npm install
+#     - cd client && npm install
+#   script:
+#     # Installs Chrome
+#     - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub |  apt-key add -
+#     - echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' |  tee /etc/apt/sources.list.d/google-chrome.list
+#     - apt-get update
+#     - apt-get install google-chrome-stable -y
+#     # Runs the tests.
+#     - npm run test
+
+# e2e:
+#   stage: test
+#   image:
+#     name: testcafe/testcafe
+#     entrypoint: ["/bin/sh". "-c"]
+#   script:
+#     - /opt/testcafe/docker/testcafe-docker.sh "chromium --no-sandbox" -a "npm run testE2E"
+
+e2e_tests:
+  # Replace '10.14' with the latest Node.js LTS version
+  # available on Docker Hub
+  stage: teste2e
+  image: circleci/node:10.14-browsers
+  before_script:
+    - npm install
+    - cd client && npm install
+  script:
+    - npm run testE2E
+# e2e_tests:
+#   # available on Docker Hub
+#   stage: test
+#   image: circleci/node:10.16-browsers
+#   before_script:
+#     - npm install
+#   script:
+#     - npm run testE2E
+
+# staging:
+#   type: deploy
+#   stage: staging
+#   image: ruby:latest
+#   script:
+#     - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+#   only:
+#     - staging

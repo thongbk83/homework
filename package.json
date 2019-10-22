@@ -1,0 +1,50 @@
+{
+    "name": "kamereo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "engines": {
+        "npm": "6.x",
+        "node": "10.x"
+    },
+    "scripts": {
+        "start": "node server",
+        "server": "nodemon server",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "testClient": "npm run test --prefix client",
+        "test": "concurrently \"mocha --timeout 10000\" \"npm run testClient\"",
+        "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+        "serverTest": "mocha --timeout 10000",
+        "test:e2e": "testcafe chrome ./tests/** ",
+        "testE2E": "start-server-and-test dev http://localhost:3000 test:e2e"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cloudinary": "^1.15.0",
+        "config": "^3.2.3",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "express-form-data": "^2.0.10",
+        "express-validator": "^6.2.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.7.4",
+        "request": "^2.88.0"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "chai-http": "^4.3.0",
+        "concurrently": "^5.0.0",
+        "jest": "^24.9.0",
+        "mocha": "^6.2.1",
+        "nodemon": "^1.19.3",
+        "sinon": "^7.5.0",
+        "start-server-and-test": "^1.10.6",
+        "supertest": "^4.0.2",
+        "testcafe": "^1.6.0"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "mongoURI": "mongodb+srv://thongbk:1qazxsw2@cluster0-rssjx.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "mysecretToken",
+    "CLOUD_NAME": "thongphanimage",
+    "INARY_API_KEY": "364949161855963",
+    "INARY_API_SECRET": "Y8ETDYy7YyPgepCX3ADOcATfKNQ",
+    "CLOUDINARY_URL": "cloudinary://364949161855963:Y8ETDYy7YyPgepCX3ADOcATfKNQ@thongphanimage"
+}

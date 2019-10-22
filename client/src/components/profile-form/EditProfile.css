@@ -1,0 +1,22 @@
+.input {
+    display: "none";
+}
+.image {
+    display: "block";
+    margin-left: "auto";
+    margin-right: "auto";
+    width: 200px;
+    height: "auto";
+}
+
+.selectEmpty {
+    margin-top: 16px;
+}
+.mt5 {
+    margin-top: "5px";
+}
+
+.formControl {
+    margin: 8px;
+    min-width: 120px;
+}
