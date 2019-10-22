@@ -21,10 +21,6 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      # Build
-      - deploy:
-          name: Build
-          command: yarn build
       # End-to-end tests
       - run:
           name: Run e2e tests
